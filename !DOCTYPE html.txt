@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sandman Vision Board - AI-Powered Foundry Revolution</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #1e3a8a 0%, #3730a3 50%, #581c87 100%);
+        }
+        
+        .card-hover {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+        }
+        
+        .pillar-card {
+            background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
+            border: 1px solid rgba(99, 102, 241, 0.1);
+        }
+        
+        .funnel-animation {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: slideInUp 0.8s ease forwards;
+        }
+        
+        .funnel-animation:nth-child(1) { animation-delay: 0.2s; }
+        .funnel-animation:nth-child(2) { animation-delay: 0.4s; }
+        .funnel-animation:nth-child(3) { animation-delay: 0.6s; }
+        
+        @keyframes slideInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .pulse-glow {
+            animation: pulseGlow 3s infinite;
+        }
+        
+        @keyframes pulseGlow {
+            0%, 100% { 
+                box-shadow: 0 0 20px rgba(79, 70, 229, 0.3);
+                transform: scale(1);
+            }
+            50% { 
+                box-shadow: 0 0 40px rgba(79, 70, 229, 0.6);
+                transform: scale(1.05);
+            }
+        }
+        
+        .metric-highlight {
+            background: linear-gradient(90deg, #4f46e5, #7c3aed);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 800;
+        }
+        
+        .world-map {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 50'%3E%3Cpath d='M20,25 Q30,15 40,25 T60,25 Q70,35 80,25' stroke='%234f46e5' stroke-width='0.5' fill='none' opacity='0.3'/%3E%3C/svg%3E");
+            background-repeat: repeat;
+        }
+        
+        .section-active {
+            border-left: 6px solid #4f46e5;
+            background: linear-gradient(90deg, rgba(79, 70, 229, 0.08) 0%, transparent 100%);
+        }
+        
+        .nav-tab {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .nav-tab::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #4f46e5, #7c3aed);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-tab.active::before {
+            width: 100%;
+        }
+        
+        .floating-icon {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <!-- North Star Vision Banner -->
+    <div class="gradient-bg text-white py-12 relative overflow-hidden">
+        <div class="absolute inset-0 world-map opacity-20"></div>
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="text-center">
+                <div class="inline-flex items-center bg-white/10 backdrop-blur-sm rounded-full px-6 py-2 mb-6">
+                    <span class="text-sm font-medium">🇮🇳 Made in India • 🌍 Adopted Globally</span>
+                </div>
+                <h1 class="text-5xl md:text-7xl font-bold mb-6 leading-tight">
+                    <span class="block">🎯 SANDMAN</span>
+                    <span class="block text-3xl md:text-4xl font-light opacity-90">AI-Powered Foundry Revolution</span>
+                </h1>
+                <p class="text-xl md:text-2xl font-light max-w-4xl mx-auto leading-relaxed">
+                    Position Sandman as the world's most trusted AI & ML-powered foundry software
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg sticky top-0 z-50">
+        <div class="container mx-auto px-6">
+            <div class="flex justify-center space-x-1 py-4">
+                <button onclick="showSection('pillars')" class="nav-tab px-6 py-3 rounded-lg font-medium transition-all hover:bg-blue-50" data-section="pillars">Strategic Pillars</button>
+                <button onclick="showSection('linkedin')" class="nav-tab px-6 py-3 rounded-lg font-medium transition-all hover:bg-blue-50" data-section="linkedin">LinkedIn Strategy</button>
+                <button onclick="showSection('content')" class="nav-tab px-6 py-3 rounded-lg font-medium transition-all hover:bg-blue-50" data-section="content">Content Ecosystem</button>
+                <button onclick="showSection('funnel')" class="nav-tab px-6 py-3 rounded-lg font-medium transition-all hover:bg-blue-50" data-section="funnel">Funnel Vision</button>
+                <button onclick="showSection('growth')" class="nav-tab px-6 py-3 rounded-lg font-medium transition-all hover:bg-blue-50" data-section="growth">Personal Growth</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-6 py-12">
+        
+        <!-- Strategic Pillars Section -->
+        <section id="pillars" class="vision-section mb-16">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">🏛️ Strategic Pillars</h2>
+                <p class="text-xl text-gray-600">Six foundational strategies driving global success</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="pillar-card rounded-2xl p-8 card-hover">
+                    <div class="text-center mb-6">
+                        <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4 pulse-glow">
+                            <span class="text-2xl">🌍</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800">Global Thought Leadership</h3>
+                    </div>
+                    <p class="text-gray-600 text-center">Establishing Sandman as the definitive voice in AI-powered foundry innovation worldwide</p>
+                </div>
+                
+                <div class="pillar-card rounded-2xl p-8 card-hover">
+                    <div class="text-center mb-6">
+                        <div class="w-16 h-16 bg-gradient-to-br from-blue-600 to-blue-800 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <span class="text-2xl">💼</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800">LinkedIn Dominance</h3>
+                    </div>
+                    <p class="text-gray-600 text-center">Commanding presence across global foundry and manufacturing professional networks</p>
+                </div>
+                
+                <div class="pillar-card rounded-2xl p-8 card-hover">
+                    <div class="text-center mb-6">
+                        <div class="w-16 h-16 bg-gradient-to-br from-green-500 to-teal-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <span class="text-2xl">📱</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800">Content Ecosystem 360°</h3>
+                    </div>
+                    <p class="text-gray-600 text-center">Comprehensive multi-channel content strategy spanning all digital touchpoints</p>
+                </div>
+                
+                <div class="pillar-card rounded-2xl p-8 card-hover">
+                    <div class="text-center mb-6">
+                        <div class="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <span class="text-2xl">📊</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800">Data-Driven ABM</h3>
+                    </div>
+                    <p class="text-gray-600 text-center">Precision-targeted account-based marketing with advanced lead generation analytics</p>
+                </div>
+                
+                <div class="pillar-card rounded-2xl p-8 card-hover">
+                    <div class="text-center mb-6">
+                        <div class="w-16 h-16 bg-gradient-to-br from-orange-500 to-red-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <span class="text-2xl">🎪</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800">Events & Experiential</h3>
+                    </div>
+                    <p class="text-gray-600 text-center">Immersive brand experiences at global foundry exhibitions and industry events</p>
+                </div>
+                
+                <div class="pillar-card rounded-2xl p-8 card-hover">
+                    <div class="text-center mb-6">
+                        <div class="w-16 h-16 bg-gradient-to-br from-indigo-500 to-purple-700 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <span class="text-2xl">🤝</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800">Customer Advocacy</h3>
+                    </div>
+                    <p class="text-gray-600 text-center">Building passionate community of Sandman champions and success story ambassadors</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- LinkedIn Strategy Section -->
+        <section id="linkedin" class="vision-section mb-16" style="display: none;">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">💼 LinkedIn Strategy</h2>
+                <p class="text-xl text-gray-600">Global promotion across India, Europe, USA, Brazil, Korea, Japan</p>
+            </div>
+            
+            <div class="grid lg:grid-cols-3 gap-8">
+                <!-- Content Types -->
+                <div class="bg-white rounded-2xl shadow-lg p-8 card-hover">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4">
+                            <span class="text-2xl">📝</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800">Content Types</h3>
+                    </div>
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <span class="w-2 h-2 bg-blue-500 rounded-full mt-2 mr-3 floating-icon"></span>
+                            <span class="text-sm"><strong>Founder-led insights:</strong> Deepak Choudhary shares vision + AI in foundries</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="w-2 h-2 bg-blue-500 rounded-full mt-2 mr-3 floating-icon"></span>
+                            <span class="text-sm"><strong>Technical posts:</strong> Defect reduction, analytics reports, AI/ML innovations</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="w-2 h-2 bg-blue-500 rounded-full mt-2 mr-3 floating-icon"></span>
+                            <span class="text-sm"><strong>Customer success:</strong> Before/after metrics from Sandman users</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="w-2 h-2 bg-blue-500 rounded-full mt-2 mr-3 floating-icon"></span>
+                            <span class="text-sm"><strong>Thought leadership:</strong> "Future of Smart Foundries" series</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="w-2 h-2 bg-blue-500 rounded-full mt-2 mr-3 floating-icon"></span>
+                            <span class="text-sm"><strong>Engaging formats:</strong> Polls, carousels, infographics, mini-videos</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Engagement Strategy -->
+                <div class="bg-white rounded-2xl shadow-lg p-8 card-hover">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mr-4">
+                            <span class="text-2xl">🎯</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800">Engagement Strategy</h3>
+                    </div>
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <span class="w-2 h-2 bg-green-500 rounded-full mt-2 mr-3 floating-icon"></span>
+                            <span class="text-sm">Join & contribute in global foundry/manufacturing groups</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="w-2 h-2 bg-green-500 rounded-full mt-2 mr-3 floating-icon"></span>
+                            <span class="text-sm">Personalized InMails to decision-makers</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="w-2 h-2 bg-green-500 rounded-full mt-2 mr-3 floating-icon"></span>
+                            <span class="text-sm">Weekly interaction with #FoundryTech #SmartManufacturing #Industry40</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="w-2 h-2 bg-green-500 rounded-full mt-2 mr-3 floating-icon"></span>
+                            <span class="text-sm">Collaborations with foundry associations for co-branded posts</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Promotion Tactics -->
+                <div class="bg-white rounded-2xl shadow-lg p-8 card-hover">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mr-4">
+                            <span class="text-2xl">🚀</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800">Promotion Tactics</h3>
+                    </div>
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <span class="w-2 h-2 bg-purple-500 rounded-full mt-2 mr-3 floating-icon"></span>
+                            <span class="text-sm">LinkedIn Ads targeting decision-makers globally</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="w-2 h-2 bg-purple-500 rounded-full mt-2 mr-3 floating-icon"></span>
+                            <span class="text-sm">Retargeting campaigns for expo leads</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="w-2 h-2 bg-purple-500 rounded-full mt-2 mr-3 floating-icon"></span>
+                            <span class="text-sm">Sponsored thought-leadership articles</span>
+                        </li>
+                    </ul>
+                    
+                    <div class="mt-6 p-4 bg-gradient-to-r from-purple-50 to-blue-50 rounded-lg">
+                        <h4 class="font-semibold text-purple-700 mb-2">Target Markets</h4>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-white rounded-full text-xs font-medium">🇮🇳 India</span>
+                            <span class="px-3 py-1 bg-white rounded-full text-xs font-medium">🇪🇺 Europe</span>
+                            <span class="px-3 py-1 bg-white rounded-full text-xs font-medium">🇺🇸 USA</span>
+                            <span class="px-3 py-1 bg-white rounded-full text-xs font-medium">🇧🇷 Brazil</span>
+                            <span class="px-3 py-1 bg-white rounded-full text-xs font-medium">🇰🇷 Korea</span>
+                            <span class="px-3 py-1 bg-white rounded-full text-xs font-medium">🇯🇵 Japan</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Content Ecosystem Section -->
+        <section id="content" class="vision-section mb-16" style="display: none;">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">📱 Content Ecosystem 360°</h2>
+                <p class="text-xl text-gray-600">Multi-channel promotion strategy</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white rounded-2xl shadow-lg p-8 card-hover">
+                    <div class="text-center mb-6">
+                        <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <span class="text-3xl">📺</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800">YouTube</h3>
+                    </div>
+                    <p class="text-gray-600 text-center mb-4">Explainer + demo videos (2–3 mins)</p>
+                    <div class="bg-red-50 p-3 rounded-lg">
+                        <p class="text-sm text-red-700 font-medium">Focus: Visual product demonstrations</p>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-2xl shadow-lg p-8 card-hover">
+                    <div class="text-center mb-6">
+                        <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <span class="text-3xl">📧</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800">Email Automation</h3>
+                    </div>
+                    <p class="text-gray-600 text-center mb-4">Segmented drip campaigns</p>
+                    <div class="bg-blue-50 p-3 rounded-lg">
+                        <p class="text-sm text-blue-700 font-medium">Leads → Demo → Deal</p>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-2xl shadow-lg p-8 card-hover">
+                    <div class="text-center mb-6">
+                        <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <span class="text-3xl">📰</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800">Industry Portals</h3>
+                    </div>
+                    <p class="text-gray-600 text-center mb-4">Guest articles, sponsored features</p>
+                    <div class="bg-green-50 p-3 rounded-lg">
+                        <p class="text-sm text-green-700 font-medium">Authority building content</p>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-2xl shadow-lg p-8 card-hover">
+                    <div class="text-center mb-6">
+                        <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <span class="text-3xl">🎤</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800">Webinars</h3>
+                    </div>
+                    <p class="text-gray-600 text-center mb-4">Quarterly innovation sessions</p>
+                    <div class="bg-purple-50 p-3 rounded-lg">
+                        <p class="text-sm text-purple-700 font-medium">+ Guest speakers</p>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-2xl shadow-lg p-8 card-hover lg:col-span-2">
+                    <div class="text-center mb-6">
+                        <div class="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <span class="text-3xl">🎪</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800">Events Strategy</h3>
+                    </div>
+                    <div class="grid md:grid-cols-3 gap-4">
+                        <div class="text-center p-4 bg-orange-50 rounded-lg">
+                            <h4 class="font-semibold text-orange-700 mb-2">Pre-Event</h4>
+                            <p class="text-sm text-gray-600">Buzz building campaigns</p>
+                        </div>
+                        <div class="text-center p-4 bg-orange-50 rounded-lg">
+                            <h4 class="font-semibold text-orange-700 mb-2">Live Updates</h4>
+                            <p class="text-sm text-gray-600">Real-time engagement</p>
+                        </div>
+                        <div class="text-center p-4 bg-orange-50 rounded-lg">
+                            <h4 class="font-semibold text-orange-700 mb-2">Post-Event</h4>
+                            <p class="text-sm text-gray-600">Highlights & follow-ups</p>
+                        </div>
+                    </div>
+                    <div class="mt-4 text-center">
+                        <p class="text-sm text-gray-600"><strong>Key Events:</strong> ANKIROS, GIFA</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Funnel Vision Section -->
+        <section id="funnel" class="vision-section mb-16" style="display: none;">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">🎯 Funnel Vision</h2>
+                <p class="text-xl text-gray-600">TOFU → MOFU → BOFU Strategy</p>
+            </div>
+            
+            <div class="space-y-8">
+                <!-- TOFU -->
+                <div class="funnel-animation bg-white rounded-2xl shadow-lg p-8 card-hover">
+                    <div class="grid lg:grid-cols-2 gap-8">
+                        <div>
+                            <div class="flex items-center mb-6">
+                                <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mr-4">
+                                    <span class="text-2xl">📢</span>
+                                </div>
+                                <div>
+                                    <h3 class="text-2xl font-bold text-gray-800">TOFU - Awareness</h3>
+                                    <p class="text-gray-600">Building global brand recognition</p>
+                                </div>
+                            </div>
+                            <ul class="space-y-3">
+                                <li class="flex items-start">
+                                    <span class="w-2 h-2 bg-green-500 rounded-full mt-2 mr-3"></span>
+                                    <span>LinkedIn campaigns & "Did You Know" series</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="w-2 h-2 bg-green-500 rounded-full mt-2 mr-3"></span>
+                                    <span>PR features in industry publications</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="bg-gradient-to-br from-green-50 to-blue-50 p-6 rounded-xl">
+                            <h4 class="text-lg font-semibold mb-4 text-green-600">📊 KPIs</h4>
+                            <div class="space-y-3">
+                                <div class="flex justify-between items-center">
+                                    <span class="text-sm">Monthly Impressions</span>
+                                    <span class="metric-highlight text-xl">20K+</span>
+                                </div>
+                                <div class="flex justify-between items-center">
+                                    <span class="text-sm">Industry Features/Year</span>
+                                    <span class="metric-highlight text-xl">2+</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- MOFU -->
+                <div class="funnel-animation bg-white rounded-2xl shadow-lg p-8 card-hover">
+                    <div class="grid lg:grid-cols-2 gap-8">
+                        <div>
+                            <div class="flex items-center mb-6">
+                                <div class="w-12 h-12 bg-yellow-100 rounded-full flex items-center justify-center mr-4">
+                                    <span class="text-2xl">🎯</span>
+                                </div>
+                                <div>
+                                    <h3 class="text-2xl font-bold text-gray-800">MOFU - Engagement</h3>
+                                    <p class="text-gray-600">Building trust and consideration</p>
+                                </div>
+                            </div>
+                            <ul class="space-y-3">
+                                <li class="flex items-start">
+                                    <span class="w-2 h-2 bg-yellow-500 rounded-full mt-2 mr-3"></span>
+                                    <span>Case studies & explainer videos</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="w-2 h-2 bg-yellow-500 rounded-full mt-2 mr-3"></span>
+                                    <span>Targeted ABM campaigns</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="bg-gradient-to-br from-yellow-50 to-orange-50 p-6 rounded-xl">
+                            <h4 class="text-lg font-semibold mb-4 text-yellow-600">📊 KPIs</h4>
+                            <div class="space-y-3">
+                                <div class="flex justify-between items-center">
+                                    <span class="text-sm">Demos/Quarter</span>
+                                    <span class="metric-highlight text-xl">30-40</span>
+                                </div>
+                                <div class="flex justify-between items-center">
+                                    <span class="text-sm">Webinar Attendees</span>
+                                    <span class="metric-highlight text-xl">80-100</span>
+                                </div>
+                                <div class="flex justify-between items-center">
+                                    <span class="text-sm">LinkedIn Community</span>
+                                    <span class="metric-highlight text-xl">1K+</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- BOFU -->
+                <div class="funnel-animation bg-white rounded-2xl shadow-lg p-8 card-hover">
+                    <div class="grid lg:grid-cols-2 gap-8">
+                        <div>
+                            <div class="flex items-center mb-6">
+                                <div class="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center mr-4">
+                                    <span class="text-2xl">💰</span>
+                                </div>
+                                <div>
+                                    <h3 class="text-2xl font-bold text-gray-800">BOFU - Conversion</h3>
+                                    <p class="text-gray-600">Closing deals and building loyalty</p>
+                                </div>
+                            </div>
+                            <ul class="space-y-3">
+                                <li class="flex items-start">
+                                    <span class="w-2 h-2 bg-red-500 rounded-full mt-2 mr-3"></span>
+                                    <span>ROI-driven pitch decks</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="w-2 h-2 bg-red-500 rounded-full mt-2 mr-3"></span>
+                                    <span>Customer advocacy & expo follow-ups</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="bg-gradient-to-br from-red-50 to-pink-50 p-6 rounded-xl">
+                            <h4 class="text-lg font-semibold mb-4 text-red-600">📊 KPIs</h4>
+                            <div class="space-y-3">
+                                <div class="flex justify-between items-center">
+                                    <span class="text-sm">Demo-to-Deal Conversion</span>
+                                    <span class="metric-highlight text-xl">8-10%</span>
+                                </div>
+                                <div class="flex justify-between items-center">
+                                    <span class="text-sm">Enterprise Deals/Year</span>
+                                    <span class="metric-highlight text-xl">3-5</span>
+                                </div>
+                                <div class="flex justify-between items-center">
+                                    <span class="text-sm">New Markets (3 years)</span>
+                                    <span class="metric-highlight text-xl">2-3</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Personal Growth Section -->
+        <section id="growth" class="vision-section mb-16" style="display: none;">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">🚀 Personal Growth Layer</h2>
+                <p class="text-xl text-gray-600">Your journey as a digital growth strategist</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-white rounded-2xl shadow-lg p-8 card-hover">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-6 text-center">🎯 SMART Goals</h3>
+                    <div class="space-y-6">
+                        <div class="flex items-start p-4 bg-purple-50 rounded-lg">
+                            <span class="text-2xl mr-4">📝</span>
+                            <div>
+                                <h4 class="font-semibold text-purple-700">LinkedIn Newsletter</h4>
+                                <p class="text-sm text-gray-600">Launch "AI in Foundries" monthly publication</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start p-4 bg-blue-50 rounded-lg">
+                            <span class="text-2xl mr-4">🎤</span>
+                            <div>
+                                <h4 class="font-semibold text-blue-700">Speaking Engagements</h4>
+                                <p class="text-sm text-gray-600">Speak at 1-2 industry webinars in 12 months</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start p-4 bg-green-50 rounded-lg">
+                            <span class="text-2xl mr-4">📊</span>
+                            <div>
+                                <h4 class="font-semibold text-green-700">Case Studies</h4>
+                                <p class="text-sm text-gray-600">Build 3 major success stories showcasing your impact</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-gradient-to-br from-purple-100 to-blue-100 rounded-2xl p-8 card-hover">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-6 text-center">📈 Growth Metrics</h3>
+                    <div class="text-center">
+                        <div class="mb-8">
+                            <div class="text-6xl font-bold metric-highlight mb-2">30-40%</div>
+                            <p class="text-gray-700 font-medium">LinkedIn Follower Growth</p>
+                            <p class="text-sm text-gray-600">Target for 12 months</p>
+                        </div>
+                        
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="bg-white p-4 rounded-lg shadow-sm">
+                                <div class="text-2xl font-bold text-purple-600">12</div>
+                                <p class="text-xs text-gray-600">Monthly newsletters</p>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg shadow-sm">
+                                <div class="text-2xl font-bold text-blue-600">2</div>
+                                <p class="text-xs text-gray-600">Speaking events</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Professional Development Timeline -->
+            <div class="mt-12 bg-white rounded-2xl shadow-lg p-8">
+                <h3 class="text-2xl font-bold text-gray-800 mb-8 text-center">🗓️ 12-Month Development Timeline</h3>
+                <div class="grid md:grid-cols-4 gap-6">
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-gradient-to-br from-purple-500 to-blue-600 rounded-full flex items-center justify-center mx-auto mb-4 text-white font-bold">Q1</div>
+                        <h4 class="font-semibold mb-2">Foundation</h4>
+                        <p class="text-sm text-gray-600">Launch newsletter, establish content rhythm</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-teal-600 rounded-full flex items-center justify-center mx-auto mb-4 text-white font-bold">Q2</div>
+                        <h4 class="font-semibold mb-2">Growth</h4>
+                        <p class="text-sm text-gray-600">First speaking engagement, case study #1</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-gradient-to-br from-teal-500 to-green-600 rounded-full flex items-center justify-center mx-auto mb-4 text-white font-bold">Q3</div>
+                        <h4 class="font-semibold mb-2">Expansion</h4>
+                        <p class="text-sm text-gray-600">Case studies #2 & #3, follower milestone</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-gradient-to-br from-green-500 to-yellow-600 rounded-full flex items-center justify-center mx-auto mb-4 text-white font-bold">Q4</div>
+                        <h4 class="font-semibold mb-2">Leadership</h4>
+                        <p class="text-sm text-gray-600">Second speaking event, thought leader status</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Success Metrics & Milestones -->
+        <section class="bg-white rounded-2xl shadow-lg p-8 mb-8">
+            <h3 class="text-3xl font-bold text-center mb-8 text-gray-800">🏆 Success Metrics & Milestones</h3>
+            
+            <!-- Key Performance Indicators -->
+            <div class="grid md:grid-cols-3 gap-8 mb-12">
+                <div class="text-center p-6 bg-gradient-to-br from-blue-50 to-indigo-100 rounded-2xl card-hover">
+                    <div class="w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-4 pulse-glow">
+                        <span class="text-2xl text-white">📈</span>
+                    </div>
+                    <h4 class="text-2xl font-bold text-blue-700 mb-2">Brand Recognition</h4>
+                    <div class="metric-highlight text-4xl font-bold mb-2">85%</div>
+                    <p class="text-sm text-gray-600">Target awareness in global foundry industry</p>
+                </div>
+                
+                <div class="text-center p-6 bg-gradient-to-br from-green-50 to-emerald-100 rounded-2xl card-hover">
+                    <div class="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-4 pulse-glow">
+                        <span class="text-2xl text-white">🎯</span>
+                    </div>
+                    <h4 class="text-2xl font-bold text-green-700 mb-2">Market Penetration</h4>
+                    <div class="metric-highlight text-4xl font-bold mb-2">15%</div>
+                    <p class="text-sm text-gray-600">Share of AI-powered foundry software market</p>
+                </div>
+                
+                <div class="text-center p-6 bg-gradient-to-br from-purple-50 to-violet-100 rounded-2xl card-hover">
+                    <div class="w-16 h-16 bg-purple-500 rounded-full flex items-center justify-center mx-auto mb-4 pulse-glow">
+                        <span class="text-2xl text-white">🚀</span>
+                    </div>
+                    <h4 class="text-2xl font-bold text-purple-700 mb-2">Revenue Growth</h4>
+                    <div class="metric-highlight text-4xl font-bold mb-2">300%</div>
+                    <p class="text-sm text-gray-600">Year-over-year growth target</p>
+                </div>
+            </div>
+            
+            <!-- Achievement Timeline -->
+            <div class="bg-gradient-to-r from-indigo-50 to-purple-50 rounded-2xl p-8">
+                <h4 class="text-2xl font-bold text-center mb-8 text-gray-800">🎯 2025-2026 Achievement Roadmap</h4>
+                <div class="grid md:grid-cols-4 gap-6">
+                    <div class="bg-white p-6 rounded-xl shadow-sm text-center">
+                        <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-full flex items-center justify-center mx-auto mb-4 text-white font-bold">Q1</div>
+                        <h5 class="font-semibold mb-3 text-gray-800">Foundation Building</h5>
+                        <ul class="text-sm text-gray-600 space-y-1">
+                            <li>✅ LinkedIn strategy launch</li>
+                            <li>✅ Content ecosystem setup</li>
+                            <li>✅ First industry features</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="bg-white p-6 rounded-xl shadow-sm text-center">
+                        <div class="w-12 h-12 bg-gradient-to-br from-green-500 to-emerald-600 rounded-full flex items-center justify-center mx-auto mb-4 text-white font-bold">Q2</div>
+                        <h5 class="font-semibold mb-3 text-gray-800">Market Expansion</h5>
+                        <ul class="text-sm text-gray-600 space-y-1">
+                            <li>🎯 ANKIROS participation</li>
+                            <li>🎯 European market entry</li>
+                            <li>🎯 First major case study</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="bg-white p-6 rounded-xl shadow-sm text-center">
+                        <div class="w-12 h-12 bg-gradient-to-br from-orange-500 to-red-600 rounded-full flex items-center justify-center mx-auto mb-4 text-white font-bold">Q3</div>
+                        <h5 class="font-semibold mb-3 text-gray-800">Scale & Growth</h5>
+                        <ul class="text-sm text-gray-600 space-y-1">
+                            <li>🚀 GIFA exhibition</li>
+                            <li>🚀 US market launch</li>
+                            <li>🚀 Customer advocacy program</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="bg-white p-6 rounded-xl shadow-sm text-center">
+                        <div class="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-600 rounded-full flex items-center justify-center mx-auto mb-4 text-white font-bold">Q4</div>
+                        <h5 class="font-semibold mb-3 text-gray-800">Market Leadership</h5>
+                        <ul class="text-sm text-gray-600 space-y-1">
+                            <li>🏆 Industry thought leader</li>
+                            <li>🏆 Global recognition</li>
+                            <li>🏆 Next market planning</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Vision Statement -->
+            <div class="mt-8 text-center p-6 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-2xl text-white">
+                <h4 class="text-2xl font-bold mb-4">🌟 Our North Star Vision</h4>
+                <p class="text-lg font-medium opacity-95">"By 2026, every foundry professional worldwide will recognize Sandman as the definitive AI solution for smart manufacturing - proudly Made in India, trusted globally."</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="gradient-bg text-white py-12">
+        <div class="container mx-auto px-6 text-center">
+            <div class="mb-6">
+                <h3 class="text-2xl font-bold mb-2">🎯 Sandman Vision 2025-2026</h3>
+                <p class="text-lg opacity-90">AI-Powered Foundry Revolution • Made in India • Adopted Globally</p>
+            </div>
+            <div class="flex justify-center space-x-8 text-sm opacity-80">
+                <span>🌍 Global Reach</span>
+                <span>🤖 AI Innovation</span>
+                <span>📈 Data-Driven Growth</span>
+                <span>🚀 Industry Leadership</span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function showSection(sectionId) {
+            // Hide all sections
+            const sections = document.querySelectorAll('.vision-section');
+            sections.forEach(section => {
+                section.style.display = 'none';
+                section.classList.remove('section-active');
+            });
+            
+            // Show selected section
+            const targetSection = document.getElementById(sectionId);
+            targetSection.style.display = 'block';
+            targetSection.classList.add('section-active');
+            
+            // Update navigation
+            const navTabs = document.querySelectorAll('.nav-tab');
+            navTabs.forEach(tab => {
+                tab.classList.remove('active', 'bg-blue-100', 'text-blue-600');
+                tab.classList.add('text-gray-600');
+            });
+            
+            const activeTab = document.querySelector(`[data-section="${sectionId}"]`);
+            activeTab.classList.add('active', 'bg-blue-100', 'text-blue-600');
+            activeTab.classList.remove('text-gray-600');
+            
+            // Smooth scroll to section
+            targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+        
+        // Initialize with Strategic Pillars section
+        document.addEventListener('DOMContentLoaded', function() {
+            showSection('pillars');
+            
+            // Add intersection observer for animations
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animationPlayState = 'running';
+                    }
+                });
+            });
+            
+            document.querySelectorAll('.funnel-animation').forEach(el => {
+                observer.observe(el);
+            });
+        });
+        
+        // Add hover effects
+        document.querySelectorAll('.card-hover').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-8px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+        
+        // Add click tracking for metrics
+        document.querySelectorAll('.metric-highlight').forEach(metric => {
+            metric.addEventListener('click', function() {
+                this.style.animation = 'pulseGlow 0.6s ease';
+                setTimeout(() => {
+                    this.style.animation = '';
+                }, 600);
+            });
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'978bc6c3267854f2',t:'MTc1NjgwMzIwMC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
